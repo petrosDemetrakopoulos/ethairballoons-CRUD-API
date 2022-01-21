@@ -8,7 +8,6 @@ const port = 3000
 app.use(bodyParser.json())
 
 const ethAirBalloonsProvider = ethAirBalloons('http://localhost:8545', savePath); 
-//ethereum blockchain provider URL, path to save auto generated smart contracts
 
 const Car = ethAirBalloonsProvider.createSchema({
         name: "Car",
@@ -19,7 +18,7 @@ const Car = ethAirBalloonsProvider.createSchema({
                 type: "bytes32",
                 primaryKey: true
             },
-            { 
+            {
                 name: "engine",
                 type: "bytes32",
             },
@@ -34,11 +33,11 @@ app.get('/', (req, res) => {
 })
 
 app.get('/deploy', (req, res) => {
-      Car.deploy(function (err, success) {
-         if (!err) {
+    Car.deploy(function (err, success) {
+        if (!err) {
             res.send("Contract deployed successfully!")
-    } else {
-         res.send("Contract deployment error" + err)
+        } else {
+            res.send("Contract deployment error" + err)
     }
   })
 })

@@ -5,18 +5,18 @@ pragma solidity >=0.6.2;
 pragma experimental ABIEncoderV2;
 
 contract carsContract {
-	bytes32 public dataId;
-	uint public numberOfRecords = 0;
-	bytes32[] public recordsList;
+    bytes32 public dataId;
+    uint256 public numberOfRecords = 0;
+    bytes32[] public recordsList;
 
-	event dataAdded(string dat);
+    event dataAdded(string dat);
 
-	struct Car {
-		string payload;
-		uint listPointer;
-	}
+    struct Car {
+        string payload;
+        uint256 listPointer;
+    }
 
-	mapping(bytes32 => Car) public facts;
+    mapping(bytes32 => Car) public facts;
 
 	function isRecord(bytes32 recordAddress) internal view returns (bool isRec) {
 		if(recordsList.length == 0) return false;
